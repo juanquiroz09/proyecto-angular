@@ -57,3 +57,7 @@ header a{
 header a:hover{
   background: rgba(0, 0, 0, 0.8);
 }
+
+header #logo a:hover{
+  background: transparent;
+}
