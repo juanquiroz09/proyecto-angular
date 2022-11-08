@@ -23,6 +23,14 @@ export class CreateComponent implements OnInit {
   }
   onSubmit(projectForm: any){
     console.log(this.project);
+    this._projectService.saveProject(this.project).subscribe(
+      response => {
+        console.log(response);
+      },
+      error => {
+        console.log(<any>error);
+      }
+    );
   }
 
 }
