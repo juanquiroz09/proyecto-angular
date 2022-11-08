@@ -11,6 +11,7 @@ import { ProjectService } from 'src/app/services/project.service';
 export class CreateComponent implements OnInit {
   public title: string;
   public project: Project;
+  public status: string = "";
 
   constructor(
     private _projectService: ProjectService
@@ -21,11 +22,15 @@ export class CreateComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  onSubmit(projectForm: any){
-    console.log(this.project);
+  onSubmit(form: any){
     this._projectService.saveProject(this.project).subscribe(
       response => {
-        console.log(response);
+        if (response.project) {
+          this.status = 'success';
+          form.reset();          
+        }else{
+          this.status = 'failed';
+        }
       },
       error => {
         console.log(<any>error);
