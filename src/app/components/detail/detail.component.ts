@@ -12,7 +12,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 })
 export class DetailComponent implements OnInit {
   public url: string;
-  public project: Project;
+  public project!: Project;
   public confirm: boolean;
 
   constructor(
@@ -22,8 +22,6 @@ export class DetailComponent implements OnInit {
   ){
   	this.url = Global.url;
     this.confirm = false;
-		this.project = new Project('','','','',2019,'','');
-
   }
 
   ngOnInit(){
@@ -33,7 +31,7 @@ export class DetailComponent implements OnInit {
   	});
   }
 
-  getProject(id:any){
+  getProject(id: any){
   	this._projectService.getProject(id).subscribe(
   		response => {
   			this.project = response.project;
@@ -48,7 +46,7 @@ export class DetailComponent implements OnInit {
     this.confirm = confirm;
   }
 
-  deleteProject(id:any){
+  deleteProject(id: any){
   	this._projectService.deleteProject(id).subscribe(
   		response => {
   			if(response.project){
