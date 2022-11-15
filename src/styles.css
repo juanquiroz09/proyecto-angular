@@ -1,36 +1,34 @@
 @font-face {
-  font-family: 'yanone';
-  src: local('yanone'), 
-  url('./assets/fonts/yanone.ttf') format('opentype');
+  font-family: "yanone";
+  src: local("yanone"), url("./assets/fonts/yanone.ttf") format("opentype");
 }
 @font-face {
-  font-family: 'finger';
-  src: local('finger'), 
-  url('./assets/fonts/finger.ttf') format('opentype');
+  font-family: "finger";
+  src: local("finger"), url("./assets/fonts/finger.ttf") format("opentype");
 }
-body{
-  font-family: "yanone",Arial, Helvetica, sans-serif;
+body {
+  font-family: "yanone", Arial, Helvetica, sans-serif;
   font-size: 20px;
-  background-image: url('./assets/img/pattern.png');
+  background-image: url("./assets/img/pattern.png");
   background-attachment: fixed;
 }
 
-.clearfix{
+.clearfix {
   float: none;
   clear: both;
 }
 
 /*Barra de navegación cabecera*/
-header{
+header {
   display: block;
   width: 100%;
   height: 90px;
-  background:rgba(53, 103, 164, 0.8);
+  background: rgba(53, 103, 164, 0.8);
   position: fixed;
   text-transform: uppercase;
 }
 
-header ul{
+header ul {
   display: block;
   width: 40%;
   height: inherit;
@@ -38,14 +36,14 @@ header ul{
   margin-top: -3px;
 }
 
-header ul li{
+header ul li {
   display: inline-block;
   margin: 0px auto;
   text-align: center;
   line-height: 88px;
 }
 
-header a{
+header a {
   display: block;
   padding-right: 20px;
   padding-left: 20px;
@@ -56,28 +54,28 @@ header a{
 }
 
 header a:hover,
-.actived{
+.actived {
   background: rgba(0, 0, 0, 0.8);
 }
 /*Logotipo*/
 
-#logo{
+#logo {
   font-family: "finger";
   font-size: 30px;
 }
 
-#logo a{
+#logo a {
   transition: color 500ms, transform 500ms;
 }
 
-#logo a:hover{
+#logo a:hover {
   background: transparent;
   color: black;
-  transform: scale(1.50 , 1.50);
+  transform: scale(1.5, 1.5);
 }
 
 /* Contendor Principal*/
-#content{
+#content {
   min-height: 800px;
   height: auto;
   width: 75%;
@@ -85,11 +83,11 @@ header a:hover,
   margin: 0px auto;
   box-shadow: 0px 0px 40px black;
   border-left: 1px solid #b7b7b7;
-  background: rgba(255, 255, 255, 0.7) ;
+  background: rgba(255, 255, 255, 0.7);
 }
 
 /*Pie de Página*/
-footer{
+footer {
   width: 75%;
   margin: 0px auto;
   padding-top: 15px;
@@ -97,7 +95,7 @@ footer{
 }
 
 /*Sobre mi*/
-#title{
+#title {
   width: 70%;
   margin: 0px auto;
   text-align: center;
@@ -105,40 +103,39 @@ footer{
   margin-bottom: 50px;
 }
 
-#title h1{
+#title h1 {
   font-family: "finger";
   font-size: 60px;
-  border-bottom: 1px solid #ccc ;
+  border-bottom: 1px solid #ccc;
   padding-bottom: 5px;
 }
 
-#title h3{
+#title h3 {
   font-size: 35px;
   color: gray;
   margin-top: 5px;
   margin-bottom: 5px;
 }
 
-#title h4{
-
+#title h4 {
   color: gray;
   margin-top: 5px;
   margin-bottom: 5px;
 }
-article.about{
+article.about {
   width: 70%;
   margin: 0px auto;
   margin-bottom: 20px;
   font-size: 23px;
 }
 
-.about h2{
-   border-bottom: 1px solid #ccc;
-   padding-bottom: 5px;
-   margin-bottom: 5px;
+.about h2 {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
 }
 
-.about p{
+.about p {
   padding-top: 5px;
   padding-bottom: 20px;
   text-align: justify;
@@ -147,6 +144,21 @@ article.about{
 .container {
   padding: 50px;
   padding-top: 10px;
+}
+
+.container .image {
+  float: left;
+  width: 49%;
+}
+
+.container .image img {
+  width: 49%;
+}
+
+.container .data {
+  float: left;
+  width: 48%;
+  margin-left: -250px;
 }
 
 .container h2 {
@@ -170,13 +182,15 @@ form label {
 form input[type="text"],
 form input[type="number"],
 form input[type="email"],
-form textarea{
+form textarea {
   width: 50%;
   padding: 5px;
 }
 
 form buttom,
-form input[type="submit"]{
+form input[type="submit"],
+.button-edit,
+.button-delete {
   display: block;
   font-size: 17px;
   padding: 10px;
@@ -187,19 +201,49 @@ form input[type="submit"]{
   border: 1px solid rgba(13, 67, 133, 1);
 }
 
+.button-edit,
+.button-delete {
+  width: 25%;
+  float: left;
+  margin-right: 10px;
+  text-decoration: none;
+}
+
+.button-edit {
+  background: orange;
+  font-size: 20px;
+  text-align: center;
+  border: none;
+}
+
+.button-edit:hover {
+  background: rgb(213, 170, 91);
+}
+
+.button-delete {
+  background: red;
+  font-size: 20px;
+  text-align: center;
+  border: none;
+}
+
+.button-delete:hover{
+  background: rgb(217, 100, 100);
+}
+
 form buttom :hover,
-form input[type="submit"]:hover{
+form input[type="submit"]:hover {
   color: white;
   background: rgba(53, 103, 164, 0.8);
   cursor: pointer;
   border: 1px solid rgba(13, 67, 133, 1);
 }
 
-form input[disabled]{
+form input[disabled] {
   opacity: 0.4;
 }
 
-.form_error{
+.form_error {
   font-size: 13px;
   padding: 5px;
   background: red;
@@ -207,7 +251,7 @@ form input[disabled]{
   margin-left: 5px;
 }
 
-#text_area{
+#text_area {
   position: absolute;
   margin-top: 10px;
 }
@@ -222,7 +266,7 @@ form input[disabled]{
   color: white;
 }
 
-.success{
+.success {
   background: green;
   color: white;
 }
@@ -233,7 +277,7 @@ form input[disabled]{
 }
 
 /*Página de Proyectos*/
-.project{
+.project {
   list-style: none;
   display: block;
   float: left;
@@ -244,7 +288,7 @@ form input[disabled]{
   margin-bottom: 30px;
 }
 
-.project .image{
+.project .image {
   width: 100%;
   height: 150px;
   overflow: hidden;
@@ -254,7 +298,11 @@ form input[disabled]{
   width: 120px;
 }
 
-.project a{
-  text-decoration:none;
+.project h3{
+  padding-top: 10px;
+}
+
+.project a {
+  text-decoration: none;
   color: black;
 }

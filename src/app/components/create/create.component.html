@@ -1,7 +1,7 @@
 <div class="container" *ngIf="project">
 	<h2>{{title}}</h2>
 
-	<div class="message success" *ngIf="status == 'success' && save_project">
+	<div class="message success" *ngIf="status == 'success'">
 		El proyecto se ha creado correctamente, puedes <a [routerLink]="['/project-detail', save_project._id]">verlo aquí</a>
 	</div>
 
@@ -9,7 +9,7 @@
 		El proyecto NO SE HA PODIDO CREAR
 	</div>
 
-	<form #projectForm="ngForm" (ngSubmit)="onSubmit(projectForm)">
+	<form #projectForm="ngForm" (ngSubmit)="onSubmit(projectForm)" novalidate>
 		<p>
 			<label for="name">Nombre</label>
 			<input type="text" name="name" #name="ngModel" [(ngModel)]="project.name" required />
@@ -50,7 +50,7 @@
 		<p>
 			<label for="image">Imagen del proyecto</label>
 			<span class="image" *ngIf="project.image" style="float:none;">
-				<!--<img src="{{url+'get-image/'+project.image}}" style="width:100px;"/>-->
+				<img src="{{url +'get-image/'+project.image}}" style="width:100px;"/>
 			</span><br/>
 			<input type="file" name="image" placeholder="Subir imagen" (change)="fileChangeEvent($event)"/>
 		</p>
@@ -58,3 +58,4 @@
 		<input type="submit" value="Enviar" [disabled]="!projectForm.form.valid" />
 	</form>
 </div>
+
