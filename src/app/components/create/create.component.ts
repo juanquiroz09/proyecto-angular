@@ -18,7 +18,7 @@ export class CreateComponent implements OnInit {
   public title: string;
   public project: Project;
   public save_project: any;
-  public status: string;
+  public status: string = "";
   public filesToUpload: Array<File>;
   public url: string;
 
@@ -73,7 +73,6 @@ export class CreateComponent implements OnInit {
     this.filesToUpload = <Array<File>>fileInput.target.files;
   }
 }
-export class SimpleFormComp {
-  onSubmit(projectForm: NgForm) {
-  }
+export class AppCreate{
+  show = true;
 }

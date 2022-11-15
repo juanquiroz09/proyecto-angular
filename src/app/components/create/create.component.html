@@ -1,15 +1,17 @@
 <div class="container" *ngIf="project">
 	<h2>{{title}}</h2>
 
-	<div class="message success" *ngIf="status == 'success'">
-		El proyecto se ha creado correctamente, puedes <a [routerLink]="['/project-detail', save_project._id]">verlo aquí</a>
-	</div>
+<!--	
+<div *ngIf="status == 'success'" class="message success">El proyecto se ha creado correctamente, puedes <a [routerLink]="['/project-detail', save_project._id]">verlo aquí</a></div>
+<div *ngIf="status == 'failed'" class="message failed">El proyecto NO SE HA PODIDO CREAR</div>
+-->
+<!--
+ 
+-->
+<ng-template [ngIf]="status == 'success'"><div class="message success">El proyecto se ha creado correctamente, puedes <a [routerLink]="['/project-detail', save_project._id]">verlo aquí</a></div></ng-template>
+<ng-template [ngIf]="status == 'failed'"><div class="message failed">El proyecto NO SE HA PODIDO CREAR</div></ng-template>  
 
-	<div class="message failed" *ngIf="status == 'failed'">
-		El proyecto NO SE HA PODIDO CREAR
-	</div>
-
-	<form #projectForm="ngForm" (ngSubmit)="onSubmit(projectForm)" novalidate>
+	<form #projectForm="ngForm" ng-submit="onSubmit(projectForm)">
 		<p>
 			<label for="name">Nombre</label>
 			<input type="text" name="name" #name="ngModel" [(ngModel)]="project.name" required />
