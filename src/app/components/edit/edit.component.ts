@@ -12,11 +12,12 @@ import { ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./edit.component.css'],
   providers: [ProjectService, UploadService],
 })
+
 export class EditComponent implements OnInit {
   public title: string;
   public project: Project;
   public save_project: any;
-  public status: any;
+  public status: string;
   public filesToUpload: Array<File> = [];
   public url: string;
 
@@ -47,7 +48,7 @@ export class EditComponent implements OnInit {
       }
     );
   }
-  Submit() {
+  Submit(form: any) {
     // Guardar datos básicos
     this._projectService.saveProject(this.project).subscribe(
       (response) => {
