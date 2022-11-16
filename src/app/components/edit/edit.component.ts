@@ -3,12 +3,12 @@ import { Project } from 'src/app/models/project';
 import { ProjectService } from 'src/app/services/project.service';
 import { UploadService } from 'src/app/services/upload.service';
 import { Global } from 'src/app/services/global';
-import { ActivatedRoute, Router, Params } from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 
 
 @Component({
   selector: 'app-edit',
-  templateUrl: '../create/create.component.html',
+  templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.css'],
   providers: [ProjectService, UploadService],
 })
@@ -47,7 +47,7 @@ export class EditComponent implements OnInit {
       }
     );
   }
-  onSubmit() {
+  Submit() {
     // Guardar datos básicos
     this._projectService.saveProject(this.project).subscribe(
       (response) => {

@@ -11,7 +11,7 @@
 <ng-template [ngIf]="status == 'success'"><div class="message success">El proyecto se ha creado correctamente, puedes <a [routerLink]="['/project-detail', save_project._id]">verlo aquí</a></div></ng-template>
 <ng-template [ngIf]="status == 'failed'"><div class="message failed">El proyecto NO SE HA PODIDO CREAR</div></ng-template>  
 
-	<form #projectForm="ngForm" ng-submit="onSubmit(projectForm)">
+	<form #projectForm="ngForm" (ngSubmit)="onSubmit(projectForm)">
 		<p>
 			<label for="name">Nombre</label>
 			<input type="text" name="name" #name="ngModel" [(ngModel)]="project.name" required />
@@ -57,7 +57,7 @@
 			<input type="file" name="image" placeholder="Subir imagen" (change)="fileChangeEvent($event)"/>
 		</p>
 
-		<input type="submit" value="Enviar" [disabled]="!projectForm.form.valid" />
+		<input type="submit" value="Enviar" [disabled]="!projectForm.form.valid"/>
 	</form>
 </div>
 
