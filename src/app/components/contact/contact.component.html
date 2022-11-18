@@ -1,7 +1,14 @@
 <div class="container">
-    <div class="galeria">
-        <div><img src="./assets/img/coffee1.jpg" alt="funky roots"></div>
-        <div><img src="./assets/img/coffee2.jpg" alt="road"></div>
-        <div><img src="./assets/img/coffee3.jpg" alt="happy tress"></div>
+    <h1>Contacto</h1>
+    Tamaño del Slider
+    <input type="number" [(ngModel)]="widthSlider">
+    <button (click)="cargarSlider()">Cargar Slider</button>
+    <button (click)="resetSlider()">Reset Slider</button>
+    <div *ngIf="anchuraToSlider">
+        <slider [anchura]="anchuraToSlider" 
+                [etiquetas]="captions" 
+                (conseguirAutor)="getAutor($event)">
+            </slider>
     </div>
+    <h3 *ngIf="autor">Nombre: {{autor.name}} &nbsp;&nbsp; Email: {{autor.email}}</h3>
 </div>
