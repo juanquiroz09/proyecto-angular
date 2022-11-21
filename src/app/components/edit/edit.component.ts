@@ -3,12 +3,12 @@ import { Project } from 'src/app/models/project';
 import { ProjectService } from 'src/app/services/project.service';
 import { UploadService } from 'src/app/services/upload.service';
 import { Global } from 'src/app/services/global';
-import { ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router, Params} from '@angular/router';
 
 
 @Component({
   selector: 'app-edit',
-  templateUrl: './edit.component.html',
+  templateUrl: '../create/create.component.html',
   styleUrls: ['./edit.component.css'],
   providers: [ProjectService, UploadService],
 })
@@ -48,38 +48,37 @@ export class EditComponent implements OnInit {
       }
     );
   }
-  Submit(form: any) {
-    // Guardar datos básicos
-    this._projectService.saveProject(this.project).subscribe(
-      (response) => {
-        if (response.project) {
-          // Subir la imagen
-          if (this.filesToUpload) {
-            this._uploadService
-              .makeFileRequest(
-                Global.url + 'upload-image/' + response.project._id,
-                [],
-                this.filesToUpload,
-                'image'
-              )
-              .then((result: any) => {
-                this.save_project = result.project;
-                this.status = 'success';
-              });
-          } else {
-            this.save_project = response.project;
+  onSubmit(form: any) {
+    this._projectService.updateProject(this.project).subscribe(
+      response => {
+        if (response.projectUpdated) {
+ 
+          if (this.filesToUpload.length > 0) {
+            // Subir la imagen
+            this._uploadService.makeFileRequest(Global.url + "upload-image/" + response.projectUpdated._id, [], this.filesToUpload, 'image').then((result: any) => {
+              console.log(result);
+              this.status = 'success';
+              this.save_project = result.project._id;
+    
+            });
+ 
+          }else{
+            this.save_project = response.projectUpdated._id;
             this.status = 'success';
           }
+       
+ 
         } else {
           this.status = 'failed';
         }
+ 
       },
-      (error) => {
-        console.log(<any>error);
+      error => {
+        console.log(error);
       }
-    );
+    )
+    }
+    fileChangeEvent(fileInput: any) {
+      this.filesToUpload = <Array<File>>fileInput.target.files;
+    }
   }
-  fileChangeEvent(fileInput: any) {
-    this.filesToUpload = <Array<File>>fileInput.target.files;
-  }
-}
